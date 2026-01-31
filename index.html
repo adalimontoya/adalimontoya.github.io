@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>Adali Montoya</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --frame-bg: rgba(255,255,255,0.92);
   --ink: #121212;
-  --muted: rgba(18,18,18,0.58);
+  --muted: rgba(18,18,18,0.55);
+  --frame-bg: rgba(255,255,255,0.96);
   --shadow: 0 30px 80px rgba(0,0,0,0.28);
   --soft: 0 12px 30px rgba(0,0,0,0.18);
   --radius-lg: 28px;
@@ -34,9 +34,10 @@ body{
   background-position: center;
   background-repeat: no-repeat, repeat;
 
-  padding: 28px 18px;
+  padding: 32px 20px;
 }
 
+/* subtle veil only */
 body::before{
   content:"";
   position: fixed;
@@ -45,22 +46,21 @@ body::before{
   pointer-events: none;
 }
 
-/* Layout wrapper */
+/* CENTER WRAP */
 .wrap{
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* Paper frame */
+/* MAIN WHITE POSTER */
 .frame{
   background: var(--frame-bg);
-  border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.45);
 }
 
-/* Hero */
+/* HERO */
 .hero{
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -68,38 +68,52 @@ body::before{
   display: block;
 }
 
-/* Content */
+/* CONTENT */
 .content{
-  padding: 36px 38px 44px;
+  padding: 40px 42px 46px;
 }
 
+/* HEADER */
 .header{
   display: flex;
-  gap: 18px;
+  gap: 22px;
   align-items: center;
-  margin-bottom: 22px;
+  margin-bottom: 26px;
 }
 
 .logo{
   width: 140px;
+  height: auto;
 }
 
-h1{
-  font-family: "Libre Baskerville", serif;
-  font-size: 2.6rem;
+/* TYPOGRAPHY */
+h1, h2{
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
   margin: 0;
 }
 
+h1{
+  font-size: 2.8rem;
+  line-height: 1.05;
+}
+
 .role{
-  margin-top: 6px;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--muted);
+  margin-top: 6px;
 }
 
 .bio{
-  max-width: 58ch;
-  line-height: 1.85;
-  color: rgba(18,18,18,0.82);
-  margin-bottom: 36px;
+  max-width: 60ch;
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: rgba(18,18,18,0.78);
+  margin-bottom: 38px;
 }
 
 .bio p{
@@ -107,11 +121,11 @@ h1{
 }
 
 h2{
-  font-family: "Libre Baskerville", serif;
-  font-size: 1.9rem;
-  margin: 0 0 22px;
+  font-size: 1.85rem;
+  margin-bottom: 22px;
 }
 
+/* WORK GRID */
 .grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -119,8 +133,8 @@ h2{
 }
 
 .work{
-  border-radius: var(--radius-sm);
   overflow: hidden;
+  border-radius: var(--radius-sm);
   box-shadow: var(--soft);
 }
 
@@ -131,10 +145,11 @@ h2{
   display: block;
 }
 
+/* FOOTER */
 footer{
   margin-top: 26px;
-  font-size: 0.95rem;
-  color: rgba(18,18,18,0.5);
+  font-size: 0.9rem;
+  color: rgba(18,18,18,0.45);
 }
 
 /* ---------------- MOBILE ---------------- */
@@ -142,37 +157,45 @@ footer{
 @media (max-width: 900px){
 
   body{
+    padding: 24px 14px;
     background-attachment: scroll;
-    padding: 22px 14px;
   }
 
-  .wrap{
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
+  /* MOBILE = FLAT POSTER */
   .frame{
-    border-radius: 0;              /* removes rounded edges */
-    background: rgba(255,255,255,0.96);
+    border-radius: 0;
     box-shadow: 0 18px 55px rgba(0,0,0,0.18);
   }
 
-  .grid{
-    grid-template-columns: 1fr;
+  .content{
+    padding: 30px 22px 34px;
   }
 
   h1{
     font-size: 2.2rem;
   }
 
-  .content{
-    padding: 28px 22px 32px;
+  h2{
+    font-size: 1.6rem;
+  }
+
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  .work{
+    border-radius: 0;
+  }
+
+  .logo{
+    width: 110px;
   }
 }
 </style>
 </head>
 
 <body>
+
 <div class="wrap">
   <div class="frame">
 
@@ -190,12 +213,10 @@ footer{
 
       <div class="bio">
         <p>
-          Adali Montoya is a visual artist whose work explores form, color, and emotion through figurative imagery.
-          Her practice centers on the human body as a site of tension and tenderness.
+          Adali Montoya is a visual artist whose work explores form, color, and emotion through figurative imagery. Her practice centers on the human body as a site of tension and tenderness, using atmosphere, light, and composition to evoke intimacy, power, and vulnerability.
         </p>
         <p>
-          Through layered surfaces and quiet intensity, Montoya creates images that linger—inviting prolonged,
-          personal engagement.
+          Her work is guided less by narrative and more by sensation, inviting viewers into moments that feel suspended in time. Through layered surfaces and quiet intensity, Montoya creates images that linger—resisting easy interpretation and encouraging prolonged, personal engagement.
         </p>
       </div>
 
@@ -212,5 +233,6 @@ footer{
     </div>
   </div>
 </div>
+
 </body>
 </html>
