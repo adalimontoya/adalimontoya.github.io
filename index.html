@@ -1,238 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adali Montoya</title>
 
-<title>Adali Montoya</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink: #121212;
+      --muted: rgba(18,18,18,0.55);
+      --frame-bg: rgba(255,255,255,0.96);
+      --shadow-desktop: 0 30px 80px rgba(0,0,0,0.28);
+      --shadow-mobile: 0 18px 55px rgba(0,0,0,0.18);
+    }
 
-<style>
-:root{
-  --ink: #121212;
-  --muted: rgba(18,18,18,0.55);
-  --frame-bg: rgba(255,255,255,0.96);
-  --shadow: 0 30px 80px rgba(0,0,0,0.28);
-  --soft: 0 12px 30px rgba(0,0,0,0.18);
-  --radius-lg: 28px;
-  --radius-sm: 18px;
-}
+    *{ box-sizing: border-box; }
 
-*{ box-sizing: border-box; }
+    body{
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Montserrat", sans-serif;
 
-body{
-  margin: 0;
-  min-height: 100vh;
-  font-family: "Inter", sans-serif;
+      background-image:
+        url("Assets/bg.jpg"),
+        radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: cover, 3px 3px;
+      background-position: center;
+      background-repeat: no-repeat, repeat;
 
-  background-image:
-    url("Assets/bg.jpg"),
-    radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: cover, 3px 3px;
-  background-position: center;
-  background-repeat: no-repeat, repeat;
+      padding: 28px 18px;
+    }
 
-  padding: 32px 20px;
-}
+    /* Outer container */
+    .wrap{
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-/* subtle veil only */
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  background: rgba(255,255,255,0.01);
-  pointer-events: none;
-}
+    /* White page */
+    .frame{
+      background: var(--frame-bg);
+      box-shadow: var(--shadow-desktop);
+      overflow: hidden;
+    }
 
-/* CENTER WRAP */
-.wrap{
-  max-width: 900px;
-  margin: 0 auto;
-}
+    /* Hero image */
+    .hero{
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
 
-/* MAIN WHITE POSTER */
-.frame{
-  background: var(--frame-bg);
-  box-shadow: var(--shadow);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
+    /* Content */
+    .content{
+      padding: 38px 40px 44px;
+    }
 
-/* HERO */
-.hero{
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-}
+    /* Header */
+    .header{
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
 
-/* CONTENT */
-.content{
-  padding: 40px 42px 46px;
-}
+    .logo{
+      width: 130px;
+      height: auto;
+    }
 
-/* HEADER */
-.header{
-  display: flex;
-  gap: 22px;
-  align-items: center;
-  margin-bottom: 26px;
-}
+    h1{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.6rem;
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
 
-.logo{
-  width: 140px;
-  height: auto;
-}
+    .role{
+      margin-top: 6px;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
-/* TYPOGRAPHY */
-h1, h2{
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  margin: 0;
-}
+    /* Bio */
+    .bio{
+      max-width: 60ch;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: rgba(18,18,18,0.8);
+      margin-bottom: 40px;
+    }
 
-h1{
-  font-size: 2.8rem;
-  line-height: 1.05;
-}
+    .bio p{
+      margin: 0 0 16px;
+    }
 
-.role{
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 6px;
-}
+    h2{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.9rem;
+      font-weight: 500;
+      margin: 0 0 22px;
+      color: var(--ink);
+    }
 
-.bio{
-  max-width: 60ch;
-  font-size: 1.02rem;
-  line-height: 1.9;
-  color: rgba(18,18,18,0.78);
-  margin-bottom: 38px;
-}
+    /* Works grid */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
 
-.bio p{
-  margin: 0 0 16px;
-}
+    .work img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-h2{
-  font-size: 1.85rem;
-  margin-bottom: 22px;
-}
+    footer{
+      margin-top: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+    }
 
-/* WORK GRID */
-.grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
+    /* =======================
+       MOBILE
+       ======================= */
+    @media (max-width: 900px){
+      body{
+        padding: 18px 14px;
+        background-attachment: scroll;
+      }
 
-.work{
-  overflow: hidden;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--soft);
-}
+      .frame{
+        max-width: 560px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-mobile);
+        border-radius: 0; /* NO rounded edges */
+      }
 
-.work img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+      .content{
+        padding: 28px 22px 32px;
+      }
 
-/* FOOTER */
-footer{
-  margin-top: 26px;
-  font-size: 0.9rem;
-  color: rgba(18,18,18,0.45);
-}
+      .grid{
+        grid-template-columns: 1fr;
+      }
 
-/* ---------------- MOBILE ---------------- */
-
-@media (max-width: 900px){
-
-  body{
-    padding: 24px 14px;
-    background-attachment: scroll;
-  }
-
-  /* MOBILE = FLAT POSTER */
-  .frame{
-    border-radius: 0;
-    box-shadow: 0 18px 55px rgba(0,0,0,0.18);
-  }
-
-  .content{
-    padding: 30px 22px 34px;
-  }
-
-  h1{
-    font-size: 2.2rem;
-  }
-
-  h2{
-    font-size: 1.6rem;
-  }
-
-  .grid{
-    grid-template-columns: 1fr;
-  }
-
-  .work{
-    border-radius: 0;
-  }
-
-  .logo{
-    width: 110px;
-  }
-}
-</style>
+      h1{
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <div class="frame">
 
-<div class="wrap">
-  <div class="frame">
+      <img class="hero" src="Assets/hero.jpg" alt="Hero artwork">
 
-    <img class="hero" src="Assets/hero.jpg" alt="Hero artwork">
+      <div class="content">
 
-    <div class="content">
-
-      <div class="header">
-        <img class="logo" src="Assets/logo.png" alt="Logo">
-        <div>
-          <h1>Adali Montoya</h1>
-          <div class="role">Oil painter</div>
+        <div class="header">
+          <img class="logo" src="Assets/logo.png" alt="Logo">
+          <div>
+            <h1>Adali Montoya</h1>
+            <div class="role">Oil painter</div>
+          </div>
         </div>
+
+        <div class="bio">
+          <p>
+            Adali Montoya is a visual artist whose work explores form, color, and emotion through figurative imagery. Her practice centers on the human body as a site of tension and tenderness, using atmosphere, light, and composition to evoke intimacy, power, and vulnerability.
+          </p>
+          <p>
+            Her work is guided less by narrative and more by sensation, inviting viewers into moments that feel suspended in time. Through layered surfaces and quiet intensity, Montoya creates images that linger—resisting easy interpretation and encouraging prolonged, personal engagement.
+          </p>
+        </div>
+
+        <h2>Selected Works</h2>
+
+        <div class="grid">
+          <div class="work"><img src="Assets/work1.jpg" alt=""></div>
+          <div class="work"><img src="Assets/work2.jpg" alt=""></div>
+          <div class="work"><img src="Assets/work3.jpg" alt=""></div>
+        </div>
+
+        <footer>© 2026 Adali Montoya</footer>
+
       </div>
-
-      <div class="bio">
-        <p>
-          Adali Montoya is a visual artist whose work explores form, color, and emotion through figurative imagery. Her practice centers on the human body as a site of tension and tenderness, using atmosphere, light, and composition to evoke intimacy, power, and vulnerability.
-        </p>
-        <p>
-          Her work is guided less by narrative and more by sensation, inviting viewers into moments that feel suspended in time. Through layered surfaces and quiet intensity, Montoya creates images that linger—resisting easy interpretation and encouraging prolonged, personal engagement.
-        </p>
-      </div>
-
-      <h2>Selected Works</h2>
-
-      <div class="grid">
-        <div class="work"><img src="Assets/work1.jpg" alt=""></div>
-        <div class="work"><img src="Assets/work2.jpg" alt=""></div>
-        <div class="work"><img src="Assets/work3.jpg" alt=""></div>
-      </div>
-
-      <footer>© 2026 Adali Montoya</footer>
-
     </div>
   </div>
-</div>
-
 </body>
 </html>
