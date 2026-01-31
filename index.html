@@ -1,95 +1,153 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Adali Montoya</title>
+
   <style>
-    :root{
-      --bg:#07070b;
-      --card:#11111a;
-      --text:#f4f4f7;
-      --muted:#b9b9c6;
-      --radius:22px;
-    }
-    *{box-sizing:border-box}
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      background: radial-gradient(1200px 700px at 20% 10%, #151528 0%, var(--bg) 60%);
-      color:var(--text);
+      background:url("Assets/bg.jpg") center / cover fixed no-repeat;
+      padding:28px 14px 60px;
     }
-    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 70px;}
-    .top{display:flex;gap:14px;align-items:center;margin:10px 0 18px;}
+
+    .card{
+      max-width:920px;
+      margin:0 auto;
+      background:rgba(255,255,255,0.96);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .hero-strip img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .content{
+      padding:26px 26px 34px;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin:6px 0 16px;
+    }
+
     .logo{
-      width:62px;height:62px;border-radius:16px;overflow:hidden;
-      background:#0f0f18;flex:0 0 auto;
-      display:flex;align-items:center;justify-content:center;
+      width:58px;
+      height:58px;
+      border-radius:12px;
+      object-fit:contain;
+      padding:8px;
+      background:rgba(255,255,255,0.85);
     }
-    .logo img{width:100%;height:100%;object-fit:cover;display:block;}
-    h1{margin:0;font-size:38px;line-height:1.05;}
-    .bio{margin:6px 0 0;color:var(--muted);font-size:18px;max-width:52ch;}
-    .hero{
-      margin:18px 0 26px;
-      border-radius:28px; overflow:hidden;
-      background:linear-gradient(180deg,#0f0f18,#0b0b12);
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+
+    h1{
+      margin:0;
+      font-size:2.2rem;
+      line-height:1.1;
+      color:#111;
     }
-    .hero img{width:100%;height:auto;display:block;}
-    h2{margin:24px 0 14px;font-size:30px;}
+
+    .subtitle{
+      margin-top:6px;
+      color:#444;
+      font-size:1.05rem;
+    }
+
+    .bio{
+      margin-top:14px;
+      color:#222;
+      font-size:1.05rem;
+      line-height:1.6;
+      max-width:70ch;
+    }
+
+    h2{
+      margin:30px 0 14px;
+      font-size:1.7rem;
+      color:#111;
+    }
+
     .grid{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns:repeat(2, minmax(0, 1fr));
       gap:16px;
     }
-    .card{
-      background:rgba(17,17,26,.75);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius: var(--radius);
-      overflow:hidden;
-      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+
+    .grid img{
+      width:100%;
+      border-radius:16px;
+      display:block;
+      object-fit:cover;
+      aspect-ratio:4/5;
     }
-    .card img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio: 4 / 5;}
-    footer{margin-top:34px;color:rgba(255,255,255,.55);font-size:14px;}
-    @media (max-width:720px){
-      h1{font-size:34px}
-      .bio{font-size:17px}
+
+    .grid img.last{
+      grid-column:1 / -1;
+      aspect-ratio:3/2;
+    }
+
+    footer{
+      margin-top:26px;
+      color:#666;
+      font-size:0.95rem;
+    }
+
+    @media (max-width:600px){
+      .hero-strip img{height:180px;}
+      .grid{grid-template-columns:1fr;}
+      .grid img.last{grid-column:auto; aspect-ratio:4/5;}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="card">
 
-    <div class="top">
-      <div class="logo">
-        <img src="Assets/logo.png" alt="Logo">
+    <!-- HERO IMAGE -->
+    <div class="hero-strip">
+      <img src="Assets/work1.jpg" alt="Featured painting by Adali Montoya">
+    </div>
+
+    <div class="content">
+
+      <!-- HEADER -->
+      <div class="header">
+        <img class="logo" src="Assets/logo.png" alt="Adali Montoya logo">
+        <div>
+          <h1>Adali Montoya</h1>
+          <div class="subtitle">Oil painter</div>
+        </div>
       </div>
-      <div>
-        <h1>Adali Montoya</h1>
-        <div class="bio">Visual artist exploring form, color, and emotion.</div>
+
+      <!-- BIOGRAPHY (your approved text) -->
+      <div class="bio">
+        <p>
+          <strong>Adali Montoya</strong> is a visual artist whose work explores form, color, and emotion through figurative imagery. Her practice centers on the human body as a site of tension and tenderness, using atmosphere, light, and composition to evoke intimacy, power, and vulnerability.
+        </p>
+        <p>
+          Her work is guided less by narrative and more by sensation, inviting viewers into moments that feel suspended in time. Through layered surfaces and quiet intensity, Montoya creates images that linger—resisting easy interpretation and encouraging prolonged, personal engagement.
+        </p>
       </div>
+
+      <!-- SELECTED WORKS (3 works) -->
+      <h2>Selected Works</h2>
+      <div class="grid">
+        <img src="Assets/work2.jpg" alt="Work 1">
+        <img src="Assets/work3.jpg" alt="Work 2">
+        <img class="last" src="Assets/work4.jpg" alt="Work 3">
+      </div>
+
+      <footer>© 2026 Adali Montoya</footer>
     </div>
-
-    <!-- HERO IMAGE (using work1.jpg) -->
-    <div class="hero">
-      <img src="Assets/work1.jpg" alt="Featured artwork">
-    </div>
-
-    <h2>Selected Works</h2>
-
-    <!-- 3 artworks: work2, work3, work4 -->
-    <div class="grid">
-      <div class="card"><img src="Assets/work2.jpg" alt="Artwork 1"></div>
-      <div class="card"><img src="Assets/work3.jpg" alt="Artwork 2"></div>
-      <div class="card"><img src="Assets/work4.jpg" alt="Artwork 3"></div>
-    </div>
-
-    <footer>© <span id="y"></span> Adali Montoya</footer>
   </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
