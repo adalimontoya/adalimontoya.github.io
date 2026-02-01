@@ -2,100 +2,445 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Adali Montoya</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: #f5f5f5;
-      color: #222;
+    :root{
+      --frame-bg: rgba(255,255,255,0.92);
+      --frame-bg-mobile: rgba(255,255,255,0.72);
+      --ink: #121212;
+      --muted: rgba(18,18,18,0.58);
+      --shadow: 0 30px 80px rgba(0,0,0,0.28);
+      --soft: 0 12px 30px rgba(0,0,0,0.18);
+      --radius-lg: 28px;
+      --radius-sm: 18px;
+      --line: rgba(18,18,18,0.10);
     }
 
-    header {
+    *{ box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+
+      background-image:
+        url("Assets/bg.jpg"),
+        radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: cover, 3px 3px;
+      background-position: center, center;
+      background-repeat: no-repeat, repeat;
+
+      padding: 28px 18px;
+      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--ink);
+    }
+
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.01);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .wrap{
       position: relative;
-      height: 100vh;
-      background: url('Assets/hero.jpg') center/cover no-repeat;
+      z-index: 1;
+      max-width: min(900px, 92vw);
+      margin: 0 auto;
+      padding: 40px 18px 60px;
+    }
+
+    .frame{
+      background: var(--frame-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.45);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* HERO full width (keeps your original look) */
+    .hero{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .content{
+      padding: 34px 36px 40px;
+      position: relative;
+    }
+
+    /* Header row */
+    .header{
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .overlay {
-      background: rgba(255,255,255,0.82);
-      padding: 40px;
-      border-radius: 18px;
-      text-align: center;
-      max-width: 420px;
-      width: 85%;
-    }
-
-    h1 {
-      margin: 0;
-      font-weight: 400;
-      letter-spacing: 2px;
-    }
-
-    nav {
-      margin-top: 24px;
+    .brand{
       display: flex;
-      flex-direction: column;
-      gap: 14px;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
     }
 
-    nav a {
+    .logo{
+      width: 120px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .titleblock{
+      min-width: 0;
+    }
+
+    h1{
+      font-family: "Libre Baskerville", serif;
+      font-size: 2.6rem;
+      margin: 0;
+      letter-spacing: -0.015em;
+      line-height: 1.05;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .role{
+      margin-top: 6px;
+      font-size: 1.02rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* Hamburger button */
+    .menu{
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .menu-btn{
+      appearance: none;
+      border: 1px solid rgba(18,18,18,0.18);
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+
+    .menu-icon{
+      width: 18px;
+      height: 12px;
+      position: relative;
+    }
+    .menu-icon span{
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(18,18,18,0.80);
+      border-radius: 2px;
+    }
+    .menu-icon span:nth-child(1){ top: 0; }
+    .menu-icon span:nth-child(2){ top: 5px; }
+    .menu-icon span:nth-child(3){ bottom: 0; }
+
+    /* Dropdown panel */
+    .dropdown{
+      position: absolute;
+      top: 52px;
+      right: 0;
+      width: 220px;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(18,18,18,0.12);
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+      padding: 10px;
+      display: none;
+      z-index: 10;
+    }
+
+    .dropdown.open{ display: block; }
+
+    .dropdown a{
+      display: block;
       text-decoration: none;
-      color: #222;
-      font-size: 14px;
-      letter-spacing: 1px;
+      color: rgba(18,18,18,0.86);
+      padding: 12px 12px;
+      border-radius: 12px;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .dropdown a:hover{
+      background: rgba(18,18,18,0.06);
     }
 
-    nav a:hover {
-      opacity: 0.6;
+    .bio{
+      max-width: 62ch;
+      line-height: 1.85;
+      font-size: 1.03rem;
+      color: rgba(18,18,18,0.82);
+      margin-bottom: 36px;
+    }
+    .bio p{ margin: 0 0 16px; }
+
+    h2{
+      font-family: "Libre Baskerville", serif;
+      font-size: 1.9rem;
+      margin: 0 0 16px;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 13px;
+    .section{
+      margin-top: 34px;
+      padding-top: 10px;
     }
 
-    footer a {
-      color: #222;
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .work{
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--soft);
+      background: rgba(255,255,255,0.5);
+      aspect-ratio: 4 / 5;
+    }
+
+    .work img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .exhibitions{
+      margin-top: 8px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 18px;
+      background: rgba(255,255,255,0.40);
+    }
+
+    .exhibitions .item{
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .exhibitions .item:last-child{ border-bottom: 0; }
+
+    .exhibitions .title{
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .exhibitions .meta{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.6;
+    }
+
+    .contact{
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 10px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.40);
+    }
+
+    .contact a{
+      color: rgba(18,18,18,0.88);
       text-decoration: none;
-      margin: 0 8px;
+      font-weight: 500;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(18,18,18,0.10);
+    }
+    .contact a:hover{
+      background: rgba(18,18,18,0.06);
+    }
+
+    footer{
+      margin-top: 26px;
+      font-size: 0.95rem;
+      color: rgba(18,18,18,0.5);
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px){
+      body{
+        background-attachment: scroll;
+        padding: 18px 14px;
+      }
+
+      .wrap{
+        max-width: 100%;
+        padding: 18px 0 40px;
+      }
+
+      .frame{
+        background: var(--frame-bg-mobile);
+        border-radius: 26px;
+        box-shadow: 0 18px 55px rgba(0,0,0,0.18);
+      }
+
+      .content{
+        padding: 22px 18px 28px;
+      }
+
+      h1{ font-size: 2.05rem; }
+
+      .logo{ width: 96px; }
+
+      .grid{ grid-template-columns: 1fr; }
+
+      .dropdown{
+        width: 210px;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <div class="frame">
+      <img class="hero" src="Assets/hero.jpg" alt="Hero artwork">
 
-<header>
-  <div class="overlay">
-    <h1>ADALI MONTOYA</h1>
-    <p>Visual Artist</p>
+      <div class="content">
+        <div class="header">
+          <div class="brand">
+            <img class="logo" src="Assets/logo.png" alt="Logo">
+            <div class="titleblock">
+              <h1>Adali Montoya</h1>
+              <div class="role">Visual Artist</div>
+            </div>
+          </div>
 
-    <nav>
-      <a href="#about">About</a>
-      <a href="#works">Selected Works</a>
-      <a href="exhibitions.html">Exhibitions</a>
-      <a href="#contact">Contact</a>
-    </nav>
+          <!-- HAMBURGER (top-right, where you circled) -->
+          <div class="menu">
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menuDropdown">
+              <div class="menu-icon" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            </button>
+
+            <div class="dropdown" id="menuDropdown" role="menu" aria-label="Site menu">
+              <a href="#about" role="menuitem">About</a>
+              <a href="#works" role="menuitem">Selected Works</a>
+              <a href="#exhibitions" role="menuitem">Exhibitions</a>
+              <a href="#contact" role="menuitem">Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+          <div class="bio">
+            <p>
+              Adali Montoya is a visual artist whose work explores form, color, and emotion through figurative imagery. Her practice centers on the human body as a site of tension and tenderness, using atmosphere, light, and composition to evoke intimacy, power, and vulnerability.
+            </p>
+            <p>
+              Her work is guided less by narrative and more by sensation, inviting viewers into moments that feel suspended in time. Through layered surfaces and quiet intensity, Montoya creates images that linger—resisting easy interpretation and encouraging prolonged, personal engagement.
+            </p>
+          </div>
+        </section>
+
+        <!-- WORKS -->
+        <section class="section" id="works">
+          <h2>Selected Works</h2>
+          <div class="grid">
+            <div class="work"><img src="Assets/work1.jpg" alt=""></div>
+            <div class="work"><img src="Assets/work2.jpg" alt=""></div>
+            <div class="work"><img src="Assets/work3.jpg" alt=""></div>
+          </div>
+        </section>
+
+        <!-- EXHIBITIONS -->
+        <section class="section" id="exhibitions">
+          <h2>Exhibitions</h2>
+          <div class="exhibitions">
+            <div class="item">
+              <div class="title">Earth Forward 2026 — Group Exhibition</div>
+              <div class="meta">
+                Estrella Mountain Community College (Maricopa Community Colleges)<br/>
+                April 7, 2026 — Avondale, AZ
+              </div>
+            </div>
+            <!-- Add future exhibitions by duplicating an .item block -->
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+          <h2>Contact</h2>
+          <div class="contact">
+            <a href="mailto:adalimontoya@gmail.com">Email</a>
+            <a href="https://instagram.com/adalimontoya" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </section>
+
+        <footer>© 2026 Adali Montoya</footer>
+      </div>
+    </div>
   </div>
-</header>
 
-<section id="about"></section>
-<section id="works"></section>
-<section id="contact"></section>
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const dd = document.getElementById('menuDropdown');
 
-<footer>
-  <a href="mailto:adalimontoya@gmail.com">Email</a>
-  <a href="https://instagram.com/adalimontoya" target="_blank">Instagram</a>
-</footer>
+    function closeMenu(){
+      dd.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
 
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // close when clicking anywhere else
+    document.addEventListener('click', () => closeMenu());
+
+    // close when clicking a menu link
+    dd.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => closeMenu());
+    });
+
+    // close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  </script>
 </body>
 </html>
