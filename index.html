@@ -102,3 +102,128 @@
 
     section h2 {
       font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    section p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    /* EXHIBITIONS – NO BOXES */
+    .exhibition {
+      margin-bottom: 28px;
+    }
+
+    .exhibition strong {
+      font-size: 17px;
+    }
+
+    .exhibition span {
+      display: block;
+      color: #555;
+      margin-top: 6px;
+    }
+
+    /* CONTACT – ORIGINAL STYLE */
+    .contact-links a {
+      display: inline-block;
+      margin-right: 20px;
+      text-decoration: none;
+      color: #111;
+      font-size: 16px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .contact-links a:hover {
+      border-bottom: 1px solid #111;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <div class="hero-container">
+    <img src="Assets/hero.jpg" alt="Artwork" class="hero"/>
+
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+    <div class="panel">
+      <h1>ADALI MONTOYA</h1>
+      <div class="subtitle">Visual Artist</div>
+
+      <div class="menu">
+        <a href="#about">About</a>
+        <a href="#works">Selected Works</a>
+        <a href="#exhibitions">Exhibitions</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="dropdown" id="dropdown">
+        <!-- reserved if you want nested links later -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      Adali Montoya is a visual artist whose work explores form, emotion, and symbolic
+      narratives through painting and mixed media.
+    </p>
+  </section>
+
+  <!-- SELECTED WORKS -->
+  <section id="works">
+    <h2>Selected Works</h2>
+    <p>
+      A curated selection of recent and ongoing works.  
+      (You can later turn this into a gallery page.)
+    </p>
+  </section>
+
+  <!-- EXHIBITIONS -->
+  <section id="exhibitions">
+    <h2>Exhibitions</h2>
+
+    <div class="exhibition">
+      <strong>Earth Forward 2026 — Group Exhibition</strong>
+      <span>Estrella Mountain Community College (Maricopa Community Colleges)</span>
+      <span>April 7, 2026 — Avondale, AZ</span>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+
+    <div class="contact-links">
+      <a href="mailto:adalimontoya@gmail.com">Email</a>
+      <a href="https://instagram.com/adalimontoya" target="_blank">Instagram</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Adali Montoya
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("dropdown");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+  </script>
+
+</body>
+</html>
