@@ -2,245 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adali Montoya</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --ink: #121212;
-      --muted: rgba(18,18,18,0.55);
-
-      --frame-bg: rgba(255,255,255,0.96);
-      --frame-bg-mobile: rgba(255,255,255,0.85);
-
-      --shadow-desktop: 0 30px 80px rgba(0,0,0,0.28);
-      --shadow-mobile: 0 18px 55px rgba(0,0,0,0.18);
-
-      --radius-desktop: 28px;
-      --radius-mobile: 22px;
-    }
-
-    *{ box-sizing: border-box; }
-
-    body{
+    body {
       margin: 0;
-      min-height: 100vh;
-      font-family: "Montserrat", sans-serif;
-      color: var(--ink);
-
-      background-image:
-        url("Assets/bg.jpg"),
-        radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: cover, 3px 3px;
-      background-position: center;
-      background-repeat: no-repeat, repeat;
-
-      padding: 30px 20px;
+      font-family: 'Montserrat', sans-serif;
+      background: #f5f5f5;
+      color: #222;
     }
 
-    /* Subtle veil (NO blur) */
-    body::before{
-      content:"";
-      position: fixed;
-      inset: 0;
-      background: rgba(255,255,255,0.02);
-      pointer-events: none;
-    }
-
-    .wrap{
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .frame{
-      background: var(--frame-bg);
-      border-radius: var(--radius-desktop);
-      box-shadow: var(--shadow-desktop);
-      overflow: hidden;
-    }
-
-    .hero{
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-    }
-
-    .content{
-      padding: 40px 42px 46px;
-    }
-
-    .header{
+    header {
+      position: relative;
+      height: 100vh;
+      background: url('Assets/hero.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
-      gap: 20px;
-      margin-bottom: 26px;
+      justify-content: center;
     }
 
-    .logo{
-      width: 130px;
-      height: auto;
+    .overlay {
+      background: rgba(255,255,255,0.82);
+      padding: 40px;
+      border-radius: 18px;
+      text-align: center;
+      max-width: 420px;
+      width: 85%;
     }
 
-    h1, h2{
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      letter-spacing: -0.01em;
+    h1 {
       margin: 0;
+      font-weight: 400;
+      letter-spacing: 2px;
     }
 
-    h1{
-      font-size: 2.7rem;
+    nav {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
-    .role{
-      margin-top: 6px;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .bio{
-      max-width: 60ch;
-      font-size: 0.95rem;
-      line-height: 1.85;
-      color: rgba(18,18,18,0.8);
-      margin-bottom: 42px;
-    }
-
-    .bio p{
-      margin: 0 0 16px;
-    }
-
-    h2{
-      font-size: 1.85rem;
-      margin-bottom: 20px;
-    }
-
-    .grid{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .work img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* CONTACT */
-    .contact{
-      margin-top: 48px;
-      padding-top: 28px;
-      border-top: 1px solid rgba(18,18,18,0.12);
-    }
-
-    .contact p{
-      margin: 0 0 10px;
-      font-size: 0.95rem;
-      color: rgba(18,18,18,0.8);
-    }
-
-    .contact a{
-      color: inherit;
+    nav a {
       text-decoration: none;
-      border-bottom: 1px solid rgba(18,18,18,0.25);
+      color: #222;
+      font-size: 14px;
+      letter-spacing: 1px;
     }
 
-    .contact a:hover{
-      border-bottom-color: rgba(18,18,18,0.6);
+    nav a:hover {
+      opacity: 0.6;
     }
 
-    footer{
-      margin-top: 32px;
-      font-size: 0.85rem;
-      color: rgba(18,18,18,0.45);
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 13px;
     }
 
-    /* -------- MOBILE -------- */
-    @media (max-width: 900px){
-      body{
-        padding: 22px 14px;
-        background-attachment: scroll;
-      }
-
-      .frame{
-        background: var(--frame-bg-mobile);
-        border-radius: var(--radius-mobile);
-        box-shadow: var(--shadow-mobile);
-      }
-
-      .content{
-        padding: 30px 22px 34px;
-      }
-
-      .grid{
-        grid-template-columns: 1fr;
-      }
-
-      h1{
-        font-size: 2.2rem;
-      }
-
-      .logo{
-        width: 115px;
-      }
+    footer a {
+      color: #222;
+      text-decoration: none;
+      margin: 0 8px;
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="frame">
 
-      <img class="hero" src="Assets/hero.jpg" alt="Hero artwork">
+<header>
+  <div class="overlay">
+    <h1>ADALI MONTOYA</h1>
+    <p>Visual Artist</p>
 
-      <div class="content">
-
-        <div class="header">
-          <img class="logo" src="Assets/logo.png" alt="Logo">
-          <div>
-            <h1>Adali Montoya</h1>
-            <div class="role">Oil painter</div>
-          </div>
-        </div>
-
-        <div class="bio">
-          <p>
-            Adali Montoya is a visual artist whose work explores form, color, and emotion through figurative imagery. Her practice centers on the human body as a site of tension and tenderness, using atmosphere, light, and composition to evoke intimacy, power, and vulnerability.
-          </p>
-          <p>
-            Her work is guided less by narrative and more by sensation, inviting viewers into moments that feel suspended in time. Through layered surfaces and quiet intensity, Montoya creates images that linger—resisting easy interpretation and encouraging prolonged, personal engagement.
-          </p>
-        </div>
-
-        <h2>Selected Works</h2>
-
-        <div class="grid">
-          <div class="work"><img src="Assets/work1.jpg" alt=""></div>
-          <div class="work"><img src="Assets/work2.jpg" alt=""></div>
-          <div class="work"><img src="Assets/work3.jpg" alt=""></div>
-        </div>
-
-        <!-- CONTACT -->
-        <div class="contact">
-          <h2>Contact</h2>
-          <p>Email: <a href="mailto:adalimontoya@gmail.com">adalimontoya@gmail.com</a></p>
-          <p>Instagram: <a href="https://instagram.com/adalimontoya" target="_blank">@adalimontoya</a></p>
-        </div>
-
-        <footer>© 2026 Adali Montoya</footer>
-
-      </div>
-    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#works">Selected Works</a>
+      <a href="exhibitions.html">Exhibitions</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
+</header>
+
+<section id="about"></section>
+<section id="works"></section>
+<section id="contact"></section>
+
+<footer>
+  <a href="mailto:adalimontoya@gmail.com">Email</a>
+  <a href="https://instagram.com/adalimontoya" target="_blank">Instagram</a>
+</footer>
+
 </body>
 </html>
