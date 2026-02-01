@@ -3,55 +3,234 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adali Montoya — Visual Artist</title>
+  <title>Adali Montoya</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root{
+      --page-max: 920px;
+      --panel-bg: rgba(255,255,255,0.86);
+      --text: #151515;
+      --muted: rgba(0,0,0,0.62);
     }
 
-    body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color: #1a1a1a;
-      background-color: #ffffff;
-      line-height: 1.6;
+    *{ box-sizing:border-box; margin:0; padding:0; }
+
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background: #0b0b0b;
     }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
+    /* Background */
+    .bg{
+      position: fixed;
+      inset: 0;
       background: url("Assets/hero.jpg") center / cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+      transform: scale(1.04);
+      z-index: -2;
+    }
+    .bg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,0.25);
+      z-index:-1;
     }
 
-    .hero-card {
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(10px);
-      border-radius: 22px;
-      padding: 40px 32px;
-      max-width: 420px;
-      width: 100%;
-      text-align: center;
+    .wrap{
+      width: min(var(--page-max), 92vw);
+      margin: 18px auto 70px;
     }
 
-    .hero-card h1 {
-      font-size: 32px;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+    /* Hero image */
+    .hero{
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+    }
+    .hero img{
+      display:block;
+      width:100%;
+      height: min(60vh, 520px);
+      object-fit: cover;
     }
 
-    .hero-card h2 {
-      font-size: 16px;
-      font-weight: 300;
-      margin-bottom: 28px;
+    /* Main panel */
+    .panel{
+      margin-top: 16px;
+      background: var(--panel-bg);
+      border-radius: 26px;
+      padding: 26px 22px 28px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.28);
     }
 
-    .hero-nav a {
-      display: block;
-      text-decoration: none;
-      color: #1a1a1a;
+    .head{
+      display:flex;
+      align-items:center;
+      gap: 18px;
+      padding-bottom: 18px;
+    }
+
+    .logo{
+      width: 90px;
+      height: 90px;
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
+    .nameblock h1{
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 44px;
+      line-height: 1.05;
+    }
+    .nameblock .tag{
+      margin-top: 6px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.45);
+    }
+
+    .bio{
+      margin-top: 6px;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    h2{
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 42px;
+      margin: 40px 0 10px;
+    }
+
+    /* Selected works */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .card{
+      border-radius: 18px;
+      overflow:hidden;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.16);
+    }
+    .card img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+    }
+    .caption{
+      padding:10px 12px;
+      font-size:15px;
+      color: rgba(0,0,0,0.65);
+    }
+
+    /* Exhibitions */
+    .exhibition{
+      margin-top: 14px;
+      font-size: 18px;
+      color: rgba(0,0,0,0.68);
+      max-width: 72ch;
+    }
+    .exhibition strong{
+      color: rgba(0,0,0,0.85);
+    }
+
+    /* Contact */
+    .contact{
+      margin-top: 14px;
+      display:flex;
+      gap: 22px;
+      font-size: 18px;
+    }
+    .contact a{
+      color: rgba(0,0,0,0.70);
+      text-decoration:none;
+    }
+    .contact a:hover{
+      text-decoration:underline;
+    }
+
+    footer{
+      margin-top: 34px;
+      font-size: 14px;
+      color: rgba(0,0,0,0.42);
+    }
+
+    @media (max-width: 620px){
+      .grid{ grid-template-columns: 1fr; }
+      .card img{ height:320px; }
+      h2{ font-size: 38px; }
+      .nameblock h1{ font-size: 38px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <div class="wrap">
+    <!-- HERO -->
+    <div class="hero">
+      <img src="Assets/hero.jpg" alt="Jaguar painting">
+    </div>
+
+    <!-- CONTENT -->
+    <div class="panel">
+      <div class="head">
+        <div class="logo">
+          <img src="Assets/logo.png" alt="Adali Montoya logo"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="nameblock">
+          <h1>Adali<br>Montoya</h1>
+          <div class="tag">Oil painter</div>
+        </div>
+      </div>
+
+      <div class="bio">
+        Adali Montoya is a visual artist whose work explores form, color, and emotion
+        through figurative imagery. Her practice centers on the human body as a site
+        of tension and tenderness.
+        <br><br>
+        Through layered surfaces and quiet intensity, Montoya creates images that
+        linger—inviting prolonged, personal engagement.
+      </div>
+
+      <h2>Selected Works</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="Assets/work1.jpg" alt="Work 1">
+          <div class="caption">Title (Year) — Oil on canvas</div>
+        </div>
+        <div class="card">
+          <img src="Assets/work2.jpg" alt="Work 2">
+          <div class="caption">Title (Year) — Oil on canvas</div>
+        </div>
+      </div>
+
+      <h2>Exhibitions</h2>
+      <div class="exhibition">
+        <strong>Earth Forward 2026 — Group Exhibition</strong><br>
+        Estrella Mountain Community College (Maricopa Community Colleges)<br>
+        April 7, 2026 — Avondale, AZ
+      </div>
+
+      <h2>Contact</h2>
+      <div class="contact">
+        <a href="mailto:adalimontoya@gmail.com">Email</a>
+        <a href="https://instagram.com/adalimontoya" target="_blank">Instagram</a>
+      </div>
+
+      <footer>© 2026 Adali Montoya</footer>
+    </div>
+  </div>
+</body>
+</html>
